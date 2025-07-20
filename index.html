@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Khushi Verma - Desarrolladora Web</title>
+  
+  <!-- Librerías Externas -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- Fuentes de Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Estilos Personalizados (CSS) -->
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Raleway', sans-serif;
+      background-color: #0B0C10; /* Fondo oscuro principal */
+      color: #f3f4f6;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* === Hero Section con Fondo de Aurora Animado === */
+    .hero-aurora {
+      position: relative;
+      overflow: hidden;
+      background-color: #121212;
+    }
+    .aurora-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 200vw;
+      height: 200vw;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+    }
+    .aurora-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px); /* Desenfoque para el efecto suave */
+      opacity: 0.4;
+    }
+    .aurora-blob:nth-child(1) {
+      width: 60vw; height: 60vw; background: #667eea;
+      top: 10%; left: 10%;
+      animation: move1 20s infinite alternate;
+    }
+    .aurora-blob:nth-child(2) {
+      width: 50vw; height: 50vw; background: #764ba2;
+      top: 30%; left: 60%;
+      animation: move2 25s infinite alternate;
+    }
+    .aurora-blob:nth-child(3) {
+      width: 45vw; height: 45vw; background: #00f2fe;
+      top: 70%; left: 25%;
+      animation: move3 22s infinite alternate;
+    }
+
+    @keyframes move1 {
+      from { transform: translate(-20%, 10%) rotate(0deg); }
+      to { transform: translate(20%, -10%) rotate(180deg); }
+    }
+    @keyframes move2 {
+      from { transform: translate(15%, -10%) scale(1); }
+      to { transform: translate(-15%, 10%) scale(1.2); }
+    }
+    @keyframes move3 {
+      from { transform: translateY(20%); }
+      to { transform: translateY(-20%); }
+    }
+
+    /* === Títulos de Sección con Gradiente Animado === */
+    .section-title {
+      background: linear-gradient(90deg, #764ba2, #667eea, #00f2fe, #764ba2);
+      background-size: 300% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 8s linear infinite;
+    }
+    @keyframes shimmer {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 300% 50%; }
+    }
+    
+    /* === Estilos de Tarjetas de Proyecto con Brillo al Pasar el Cursor === */
+    .project-card-glow {
+      position: relative;
+      background-color: #1F2833;
+      border: 1px solid #45A29E;
+      transition: transform 0.5s, box-shadow 0.5s;
+      border-radius: 1rem;
+      overflow: hidden; /* Importante para el efecto de borde */
+    }
+    .project-card-glow:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(0, 242, 254, 0.1);
+    }
+    .project-card-glow::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: radial-gradient(350px circle at var(--x) var(--y), rgba(0, 242, 254, 0.25), transparent 40%);
+        opacity: 0;
+        transition: opacity 0.5s;
+        z-index: 1;
+    }
+    .project-card-glow:hover::before {
+      opacity: 1;
+    }
+    .project-card-glow > * {
+        position: relative;
+        z-index: 2; /* Asegura que el contenido esté sobre el brillo */
+    }
+    
+    /* === Botón con Efecto de Resplandor === */
+    .btn-glow {
+      box-shadow: 0 0 5px #667eea, 0 0 10px #667eea;
+      transition: all 0.3s ease-in-out;
+    }
+    .btn-glow:hover {
+      box-shadow: 0 0 15px #00f2fe, 0 0 30px #00f2fe;
+      transform: scale(1.05);
+    }
+    
+    /* === Línea de Tiempo Personalizada === */
+    .timeline-line {
+        background: linear-gradient(to bottom, #764ba2, #667eea);
+    }
+    .timeline-item-container {
+      transition: transform 0.3s ease;
+    }
+    .timeline-item-container:hover {
+      transform: scale(1.03);
+    }
+    .profile-img-float {
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+  </style>
+</head>
+<body class="text-gray-200">
+
+  <!-- Hero Section - Opción 1: Resplandor Pulsante -->
+<section class="min-h-screen flex flex-col items-center justify-center hero-aurora text-white text-center px-4 relative overflow-hidden">
+  <!-- Fondo y Contenido (Sin cambios) -->
+  <div class="aurora-container" aria-hidden="true"><div class="aurora-blob blob1"></div><div class="aurora-blob blob2"></div><div class="aurora-blob blob3"></div></div>
+  <div class="z-10 relative flex flex-col items-center">
+    <div class="profile-container"><img src="images/profile.jpg" alt="Khushi Verma Profile" class="w-48 h-48 rounded-full border-4 border-green-400 mb-6 shadow-2xl shadow-green-500/30 profile-img-float" /></div>
+    <h1 class="title-anim text-5xl md:text-7xl font-bold drop-shadow-lg">Khushi Verma</h1>
+    <p class="subtitle-anim text-2xl mt-4 text-gray-200">Creative Web Developer | MERN Stack Specialist</p>
+    <div class="flex flex-wrap justify-center mt-10 gap-5 button-container">
+      <a href="#about" class="btn-pulsing-aura">About</a>
+      <a href="#work" class="btn-pulsing-aura">Projects</a>
+      <a href="#education" class="btn-pulsing-aura">Education</a>
+      <a href="#experience" class="btn-pulsing-aura">Experience</a>
+    </div>
+  </div>
+
+  <style>
+    /* === ESTILOS BASE Y DE AURORA (Sin cambios) === */
+    .hero-aurora { background: #01051e; }
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes zoomIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+    .profile-container { animation: zoomIn 0.8s ease-out forwards; }
+    .title-anim { background: linear-gradient(90deg, #4ade80, #2dd4bf, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: fadeInDown 1s ease-out 0.2s forwards; opacity: 0; }
+    .subtitle-anim { animation: fadeInUp 1s ease-out 0.4s forwards; opacity: 0; }
+    .button-container .btn-pulsing-aura { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; }
+    .button-container .btn-pulsing-aura:nth-child(1) { animation-delay: 0.6s; }
+    .button-container .btn-pulsing-aura:nth-child(2) { animation-delay: 0.7s; }
+    .button-container .btn-pulsing-aura:nth-child(3) { animation-delay: 0.8s; }
+    .button-container .btn-pulsing-aura:nth-child(4) { animation-delay: 0.9s; }
+    .aurora-container { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 0; }
+    .aurora-blob { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.4; mix-blend-mode: hard-light; }
+    .blob1 { width: 450px; height: 450px; background: #4ade80; animation: moveBlob1 25s infinite alternate; }
+    .blob2 { width: 500px; height: 500px; background: #2dd4bf; animation: moveBlob2 30s infinite alternate-reverse; }
+    .blob3 { width: 350px; height: 350px; background: #a78bfa; animation: moveBlob3 20s infinite alternate; }
+    @keyframes moveBlob1 { from { transform: translate(10%, -15%) rotate(0deg); } to { transform: translate(50%, 20%) rotate(180deg); } }
+    @keyframes moveBlob2 { from { transform: translate(80%, 30%) rotate(0deg); } to { transform: translate(20%, 70%) rotate(-150deg); } }
+    @keyframes moveBlob3 { from { transform: translate(15%, 80%); } to { transform: translate(60%, 20%); } }
+    .profile-img-float { animation: floatImg 6s ease-in-out infinite; }
+    @keyframes floatImg { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+    
+    /* === NUEVO EFECTO DE BOTÓN: Resplandor Pulsante === */
+    @keyframes pulse-glow {
+      0% { box-shadow: 0 0 10px rgba(45, 212, 191, 0.2); }
+      50% { box-shadow: 0 0 25px rgba(45, 212, 191, 0.5); }
+      100% { box-shadow: 0 0 10px rgba(45, 212, 191, 0.2); }
+    }
+
+    .btn-pulsing-aura {
+      position: relative;
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 500;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      /* El pulso sutil en estado normal */
+      animation: pulse-glow 4s infinite ease-in-out;
+    }
+.btn-pulsing-aura:hover {
+  transform: scale(1.05);
+  background: rgba(45, 212, 191, 0.15);
+  color: #2dd4bf;
+  border-color: #2dd4bf;
+  box-shadow:
+    0 0 10px rgba(45, 212, 191, 0.5),
+    0 0 20px rgba(45, 212, 191, 0.3),
+    inset 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+    
+  </style>
+</section>
+
+  <!-- About Me Section -->
+  <section id="about" class="py-24 bg-gray-900/50 backdrop-blur-md">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-5xl font-bold mb-16 text-center section-title" data-aos="fade-up">About Me</h2>
+
+    <p class="text-lg text-gray-300 leading-relaxed mb-16 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+      A passionate and adaptable Web Developer with solid experience in building full-stack applications using React, Node.js, and MongoDB. I love designing smooth, intuitive UIs and constantly learning new tech.
+    </p>
+
+    <!-- Interests in Card Layout -->
+      <h2 class="text-5xl font-bold mb-16 text-center section-title" data-aos="fade-up" data-aos="fade-up">Intreast</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10" data-aos="fade-up" data-aos-delay="300">
+     
+      <!-- Card 1 -->
+      <div class="bg-white/5 backdrop-blur rounded-2xl p-6 hover:scale-105 transition-transform duration-300 shadow-lg">
+        <img src="images/dance (1).png" alt="Dancing" class="w-28 h-28 object-cover rounded-full mx-auto shadow-md border-4 border-white/30">
+        <h3 class="text-xl text-white mt-6 font-semibold">Dancing</h3>
+        <p class="text-gray-300 mt-2">Expressing creativity through classical and modern dance styles. It keeps me active and inspired.</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-white/5 backdrop-blur rounded-2xl p-6 hover:scale-105 transition-transform duration-300 shadow-lg">
+        <img src="images/cricket (1).png" alt="Watching Cricket" class="w-28 h-28 object-cover rounded-full mx-auto shadow-md border-4 border-white/30">
+        <h3 class="text-xl text-white mt-6 font-semibold">Watching Cricket</h3>
+        <p class="text-gray-300 mt-2">A huge fan of cricket! I enjoy watching matches, analyzing games, and cheering for Team India.</p>
+      </div>
+
+      <!-- Card 3: Optional -->
+      <div class="bg-white/5 backdrop-blur rounded-2xl p-6 hover:scale-105 transition-transform duration-300 shadow-lg">
+        <img src="images/programming.png" alt="Learning Tech" class="w-28 h-28 object-cover rounded-full mx-auto shadow-md border-4 border-white/30">
+        <h3 class="text-xl text-white mt-6 font-semibold">Learning Tech</h3>
+        <p class="text-gray-300 mt-2">Exploring new JavaScript tools, React libraries, and staying updated with frontend innovations.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  
+  <!-- Education Section -->
+  <section id="education" class="py-24" style="background-color: #0B0C10;">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-5xl font-bold mb-16 text-center section-title" data-aos="fade-up">Educacion</h2>
+      <div class="relative">
+        <div class="absolute left-4 md:left-1/2 -ml-0.5 w-1 h-full timeline-line" data-aos="zoom-in" data-aos-delay="200"></div>
+        <div class="space-y-12">
+          <!-- Item 1 -->
+          <div class="md:flex md:justify-end" data-aos="fade-right">
+            <div class="md:w-1/2 md:pr-8 timeline-item-container">
+              <div class="p-6 bg-gray-800 border border-gray-700 rounded-lg shadow-lg">
+                <h3 class="text-xl font-semibold text-cyan-400">2023 – 2025</h3>
+                <h4 class="text-2xl font-bold mt-2">SRM University</h4>
+                <p class="text-lg text-gray-400">Master of Science in Computer Applications (MCA)</p>
+              </div>
+            </div>
+          </div>
+          <!-- Item 2 -->
+          <div class="md:flex" data-aos="fade-left">
+             <div class="md:w-1/2 md:pl-8 timeline-item-container">
+              <div class="p-6 bg-gray-800 border border-gray-700 rounded-lg shadow-lg">
+                <h3 class="text-xl font-semibold text-cyan-400">2020 – 2023</h3>
+                <h4 class="text-2xl font-bold mt-2">CCSU University</h4>
+                <p class="text-lg text-gray-400">Bachelor of Science in Computer Applications (BCA)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work Experience Section -->
+  <section id="experience" class="py-24 bg-gray-900/50 backdrop-blur-sm">
+      <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-5xl font-bold mb-12 text-center section-title" data-aos="fade-up">Work Experience</h2>
+        <div class="max-w-2xl mx-auto bg-gray-800 shadow-xl p-8 rounded-xl border border-gray-700" data-aos="zoom-in-up">
+            <h3 class="text-3xl font-semibold text-cyan-400">Software Development Intern</h3>
+            <p class="text-xl text-gray-400 mt-1">MythoQuantum Explorers</p>
+            <p class="text-md text-gray-500 mt-2">1 June 2025 – 30 June 2025</p>
+            <ul class="list-disc ml-6 mt-4 text-lg text-gray-300 space-y-2">
+                <li>I worked on real projects, including UI design, API integration, and debugging.</li>
+                <li>I used Git for collaboration and followed agile practices.</li>
+            </ul>
+        </div>
+    </section>
+
+ <!-- Projects Section -->
+<section id="work" class="py-24" style="background-color: #0B0C10;">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-5xl font-bold mb-16 text-center section-title" data-aos="fade-up">Featured Projects</h2>
+    <div class="grid md:grid-cols-2 gap-10">
+      <!-- Project Card 1: Wanderlust -->
+      <div class="project-card-glow" data-aos="fade-right" data-aos-delay="100">
+        <div class="p-8">
+          <img src="images/wanderlust.png" alt="Wanderlust Project" class="rounded-lg mb-6 w-full h-64 object-cover">
+          <h3 class="text-3xl font-semibold text-cyan-300">Wanderlust – Travel Guide</h3>
+          <p class="text-gray-400 mt-3 text-lg">A travel guide platform integrating RESTful APIs for destination info, stays, and activities.</p>
+          <a href="https://github.com/khushiverma18/Wnaderlust" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline mt-5 inline-block font-semibold text-lg transition-transform transform hover:translate-x-1">View on GitHub →</a>
+        </div>
+      </div>
+      <!-- Project Card 2: FoodMood -->
+      <div class="project-card-glow" data-aos="fade-left" data-aos-delay="200">
+        <div class="p-8">
+          <img src="images/foodmood.png" alt="FoodMood Project" class="rounded-lg mb-6 w-full h-64 object-cover">
+          <h3 class="text-3xl font-semibold text-cyan-300">FoodMood – Swiggy Clone</h3>
+          <p class="text-gray-400 mt-3 text-lg">A full-stack food delivery app with login/auth, restaurant listings, and admin dashboard.</p>
+          <a href="https://github.com/khushiverma18/FoodMood" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline mt-5 inline-block font-semibold text-lg transition-transform transform hover:translate-x-1">View on GitHub →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-center py-12 border-t border-gray-800">
+  <div class="max-w-4xl mx-auto px-4" data-aos="fade-in">
+    <h3 class="text-4xl font-bold section-title">Get in Touch</h3>
+    <p class="mt-4 text-lg text-gray-400 max-w-xl mx-auto">
+      I’m currently open to new opportunities. Feel free to reach out for collaborations or just to say hi.
+    </p>
+    <div class="mt-8 flex justify-center space-x-6">
+      <a href="https://www.linkedin.com/in/khushi-verma-83a3a4250/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-cyan-400 transition transform hover:scale-110">
+        <span class="sr-only">LinkedIn</span>
+        <!-- LinkedIn Icon -->
+        <svg class="w-9 h-9" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"/></svg>
+      </a>
+      <a href="https://github.com/khushiverma18" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-cyan-400 transition transform hover:scale-110">
+        <span class="sr-only">GitHub</span>
+        <!-- GitHub Icon -->
+        <svg class="w-9 h-9" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/></svg>
+      </a>
+    </div>
+    <p class="text-sm mt-8 text-gray-500">© 2025 Khushi Verma | Designed with ❤️</p>
+  </div>
+</footer>
+
+<!-- JavaScript Scripts -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  // Initialize AOS animation
+  AOS.init({
+    duration: 800,
+    once: true,
+    offset: 50,
+    easing: 'ease-in-out-cubic',
+  });
+
+  // Glow animation effect for cards
+  document.querySelectorAll('.project-card-glow').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--x', `${x}px`);
+      card.style.setProperty('--y', `${y}px`);
+    });
+  });
+</script>
+</body>
+</html>
